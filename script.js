@@ -30,6 +30,30 @@
     if (nav?.classList.contains("is-open")) closeNav();
   });
 
+  // Trainer profile cards: clickable + keyboard accessible
+  function openProfileFrom(el) {
+    const href = el?.getAttribute?.("data-profile-href");
+    if (!href) return;
+    window.location.href = href;
+  }
+
+  document.addEventListener("click", (e) => {
+    const card = e.target?.closest?.("[data-profile-href]");
+    if (!card) return;
+    // Prevent accidental activation when selecting text
+    const sel = window.getSelection?.();
+    if (sel && String(sel).trim()) return;
+    openProfileFrom(card);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = document.activeElement?.closest?.("[data-profile-href]");
+    if (!card) return;
+    e.preventDefault();
+    openProfileFrom(card);
+  });
+
   // Mobile nav
   const nav = document.querySelector(".nav");
   const navToggle = document.querySelector("[data-nav-toggle]");
