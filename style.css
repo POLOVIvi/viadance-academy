@@ -687,6 +687,11 @@ button, input, select{ font: inherit; color: inherit; }
   transition: transform 500ms var(--ease), box-shadow 500ms var(--ease), background 500ms var(--ease);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+.style-tile:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(181, 156, 124, 0.18), var(--shadow-soft);
 }
 .style-tile::after{
   content:"";
